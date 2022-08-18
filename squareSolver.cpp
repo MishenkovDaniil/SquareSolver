@@ -1,9 +1,9 @@
-#include<stdio.h>
-#include<math.h>
+#include <stdio.h>
+#include <math.h>
 
-void solve_square (float a, float b, float c);
+void solve_square (const float a, const float b, const float c);
 
-int main()
+int main ()
 {
     float a = 0;
     float b = 0;
@@ -21,7 +21,6 @@ int main()
     solve_square (a, b, c);
 
     return 0;
-
 }
 
 void solve_square (const float a, const float b, const float c)
@@ -30,12 +29,10 @@ void solve_square (const float a, const float b, const float c)
     {
         printf ("there is no solution, sorry...");
     }
-
     else if ((b*b - 4*a*c) == 0)
     {
         printf ("the solution is x  = %f", -b/2);
     }
-
     else
     {
         float rootFromD = sqrt(b*b - 4*a*c);
