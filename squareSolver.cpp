@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+//#define NDEBUG
+#include <assert.h>
 
 void solve_square (const float a, const float b, const float c);
 
@@ -25,21 +27,19 @@ int main ()
 
 void solve_square (const float a, const float b, const float c)
 {
-    if ((b*b - 4*a*c) < 0)
+    assert ((b*b - 4*a*c) >= 0);
+    
+    float rootFromD = sqrt(b*b - 4*a*c);
+
+    float x1 = (-b + rootFromD)/2;
+    float x2 = (-b - rootFromD)/2;
+    
+    if (x1 == x2)
     {
-        printf ("there is no solution, sorry...");
-    }
-    else if ((b*b - 4*a*c) == 0)
-    {
-        printf ("the solution is x  = %f", -b/2);
+        printf ("the solution is x = %f\n", x1);
     }
     else
     {
-        float rootFromD = sqrt(b*b - 4*a*c);
-
-        float x1 = (-b + rootFromD)/2;
-        float x2 = (-b - rootFromD)/2;
-
         printf ("the solutions are x = %f and x = %f\n", x1, x2);
     }
 }
