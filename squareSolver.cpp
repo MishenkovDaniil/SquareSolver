@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-//#define NDEBUG
 #include <assert.h>
 #include <cmath>
 
