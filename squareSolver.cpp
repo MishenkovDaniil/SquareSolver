@@ -81,9 +81,9 @@ void printSquare (const int nRoots, float *x1, float *x2)
      {
         case 0: printf ("there is no solutions");
                 break;
-        case 1: printf ("the solution is x = %f.", *x1);
+        case 1: printf ("the solution is x = %.2f.", *x1);
                 break;
-        case 2: printf ("the solutions are x = %f and x = %f\n", *x1, *x2);
+        case 2: printf ("the solutions are x = %.2f and x = %.2f\n", *x1, *x2);
                 break;
         case INFSOLVES: printf ("any number");
                         break;
