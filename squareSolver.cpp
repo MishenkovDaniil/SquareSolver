@@ -6,8 +6,8 @@
 //#define NDEBUG
 
 void enterSquare (float *a, float *b, float *c);
-int numberOfRoots (const float a, const float b, const float c);
-void solveSquare (const float a, const float b, const float c, const int nRoots, float *x1, float *x2);
+int solveSquare (const float a, const float b, const float c, float *x1, float *x2);
+void printSquare (const int nRoots, float *x1, float *x2);
 
 int main ()
 {
@@ -20,9 +20,9 @@ int main ()
 
     enterSquare (&a, &b, &c);
 
-    int nRoots = numberOfRoots (a, b, c);
+    int nRoots = solveSquare (a, b, c, &x1, &x2);
 
-    solveSquare (a, b, c, nRoots, &x1, &x2);
+    printSquare (nRoots, &x1, &x2);
 
     return 0;
 }
@@ -37,53 +37,57 @@ void enterSquare (float *a, float *b, float *c)
   scanf ("%f", b);
   assert (std::isfinite(*b));
 
-
   printf ("enter absolute term: ");
   scanf ("%f", c);
   assert (std::isfinite(*c));
 }
 
-int numberOfRoots (const float a, const float b, const float c)
+int solveSquare (const float a, const float b, const float c, float *x1, float *x2)
 {
-    const float DISCR = b*b - 4*a*c;
+    assert (x1 != NULL);
+    assert (x2 != NULL);
+    assert (x1 != x2);
+
+    float discr = b*b - 4*a*c;
 
     if ((a == 0) && (b == 0) && (c == 0))
     {
         return INFSOLVES;
     }
-    else if (DISCR < 0)
+    else if (discr < 0)
     {
         return 0;
     }
-    else if (DISCR == 0)
+    else if (discr == 0)
     {
+         *x1 = *x2 = -b / (2*a);
+
          return 1;
     }
     else
     {
+        float rootFromDiscr = sqrt (discr);
+
+        *x1 = (-b + rootFromDiscr) / (2*a);
+        *x2 = (-b - rootFromDiscr) / (2*a);
+
         return 2;
     }
 }
 
-void solveSquare (const float a, const float b, const float c, const int nRoots, float *x1, float *x2)
-{
-     const float DISCR = b*b - 4*a*c;
-     const float ROOT_FROM_DISCR = sqrt(DISCR);
-
+void printSquare (const int nRoots, float *x1, float *x2)
+    {
      switch (nRoots)
      {
         case 0: printf ("there is no solutions");
                 break;
-        case 1: *x1 = *x2 = -b / (2*a);
-                printf ("the solution is x = %f.", *x1);
+        case 1: printf ("the solution is x = %f.", *x1);
                 break;
-        case 2: *x1 = (-b + ROOT_FROM_DISCR)/(2*a);
-                *x2 = (-b - ROOT_FROM_DISCR)/(2*a);
-                printf ("the solutions are x = %f and x = %f\n", *x1, *x2);
+        case 2: printf ("the solutions are x = %f and x = %f\n", *x1, *x2);
                 break;
         case INFSOLVES: printf ("any number");
                         break;
         default: printf ("ERROR");
                  break;
     }
-}
+   }
