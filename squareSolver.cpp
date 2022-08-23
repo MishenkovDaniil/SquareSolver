@@ -50,13 +50,17 @@ void enterSquare (Coeff *square)
 
 int solveSquare (Coeff *square, double *x1, double *x2)
 {
+    double a = (*square).a;
+    double b = (*square).b;
+    double c = (*square).c;
+
     assert (x1 != nullptr);
     assert (x2 != nullptr);
     assert (x1 != x2);
 
-    double discr = (*square).b*(*square).b - 4*(*square).a*(*square).c;
+    double discr = b*b - 4*a*c;
 
-    if (((*square).a == 0) && ((*square).b == 0) && ((*square).c == 0))
+    if ((a == 0) && (b == 0) && (c == 0))
     {
         return INF_ROOTS;
     }
@@ -66,7 +70,7 @@ int solveSquare (Coeff *square, double *x1, double *x2)
     }
     else if (discr == 0)
     {
-         *x1 = *x2 = -(*square).b / (2 * (*square).a);
+         *x1 = *x2 = -b / (2 * a);
 
          return 1;
     }
@@ -74,8 +78,8 @@ int solveSquare (Coeff *square, double *x1, double *x2)
     {
         double rootFromDiscr = sqrt (discr);
 
-        *x1 = (-(*square).b + rootFromDiscr) / (2 * (*square).a);
-        *x2 = (-(*square).b - rootFromDiscr) / (2 * (*square).a);
+        *x1 = (-b + rootFromDiscr) / (2 * a);
+        *x2 = (-b - rootFromDiscr) / (2 * a);
 
         return 2;
     }
