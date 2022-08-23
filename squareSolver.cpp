@@ -12,23 +12,29 @@ struct Coeff
         double c = 0;
 };
 
+struct Roots
+{
+    double x1 = 0;
+    double x2 = 0;
+};
+
 void enterSquare (Coeff *square);
-int solveSquare (Coeff *square, double *x1, double *x2);
-void printSquare (const int nRoots, double *x1, double *x2);
+int solveSquare (Coeff *square, Roots *x);
+void printSquare (const int nRoots, Roots *x);
 
 int main ()
 {
     Coeff square = {};
     Coeff *psquare = &square;
 
-    double x1 = 0;
-    double x2 = 0;
+    Roots x = {};
+    Roots *proots = &x;
 
     enterSquare (psquare);
 
-    int nRoots = solveSquare (psquare, &x1, &x2);
+    int nRoots = solveSquare (psquare, proots);
 
-    printSquare (nRoots, &x1, &x2);
+    printSquare (nRoots, proots);
 
     return 0;
 }
@@ -48,15 +54,15 @@ void enterSquare (Coeff *square)
   assert (std::isfinite((*square).c));
 }
 
-int solveSquare (Coeff *square, double *x1, double *x2)
+int solveSquare (Coeff *square, Roots *x)
 {
     double a = (*square).a;
     double b = (*square).b;
     double c = (*square).c;
 
-    assert (x1 != nullptr);
-    assert (x2 != nullptr);
-    assert (x1 != x2);
+    assert (&(*x).x1 != nullptr);
+    assert (&(*x).x2 != nullptr);
+    assert (&(*x).x1 != &(*x).x2);
 
     double discr = b*b - 4*a*c;
 
@@ -70,7 +76,7 @@ int solveSquare (Coeff *square, double *x1, double *x2)
     }
     else if (discr == 0)
     {
-         *x1 = *x2 = -b / (2 * a);
+         (*x).x1 = (*x).x2 = -b / (2 * a);
 
          return 1;
     }
@@ -78,18 +84,18 @@ int solveSquare (Coeff *square, double *x1, double *x2)
     {
         double rootFromDiscr = sqrt (discr);
 
-        *x1 = (-b + rootFromDiscr) / (2 * a);
-        *x2 = (-b - rootFromDiscr) / (2 * a);
+        (*x).x1 = (-b + rootFromDiscr) / (2 * a);
+        (*x).x2 = (-b - rootFromDiscr) / (2 * a);
 
         return 2;
     }
 }
 
-void printSquare (const int nRoots, double *x1, double *x2)
+void printSquare (const int nRoots, Roots *x)
 {
-    assert (x1 != nullptr);
-    assert (x2 != nullptr);
-    assert (x1 != x2);
+    assert (&(*x).x1 != nullptr);
+    assert (&(*x).x2 != nullptr);
+    assert (&(*x).x1 != &(*x).x2);
 
     switch (nRoots)
      {
@@ -97,10 +103,10 @@ void printSquare (const int nRoots, double *x1, double *x2)
             printf ("there is no solutions");
             break;
         case 1:
-            printf ("the solution is x = %.2lf.", *x1);
+            printf ("the solution is x = %.2lf.", (*x).x1);
             break;
         case 2:
-            printf ("the solutions are x = %.2lf and x = %.2lf\n", *x1, *x2);
+            printf ("the solutions are x = %.2lf and x = %.2lf\n", (*x).x1, (*x).x2);
             break;
         case INF_ROOTS:
             printf ("any number");
