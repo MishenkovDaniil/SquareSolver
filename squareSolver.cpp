@@ -2,8 +2,8 @@
 #include <math.h>
 #include <assert.h>
 #include <cmath>
-#define INF_ROOTS 4
 //#define NDEBUG
+enum square_consts {INF_ROOTS = 4};
 
 struct Coeffs
 {
