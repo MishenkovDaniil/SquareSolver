@@ -3,6 +3,7 @@
 //#define NDEBUG
 #include <assert.h>
 #include <cmath>
+
 enum square_consts {INF_ROOTS = 4};
 
 struct Coeffs
