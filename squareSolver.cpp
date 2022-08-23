@@ -5,108 +5,104 @@
 #define INF_ROOTS 4
 //#define NDEBUG
 
-struct Coeff
+struct Coeffs
 {
-        double a = 0;
-        double b = 0;
-        double c = 0;
+    double a = 0;
+    double b = 0;
+    double c = 0;
 };
 
 struct Roots
 {
+    int nRoots = 0;
     double x1 = 0;
     double x2 = 0;
 };
 
-void enterSquare (Coeff *square);
-int solveSquare (Coeff *square, Roots *x);
-void printSquare (const int nRoots, Roots *x);
+void enterSquare (Coeffs *coeffs);
+void solveSquare (Coeffs *coeffs, Roots *roots);
+void printSquare (Roots *roots);
 
 int main ()
 {
-    Coeff square = {};
-    Coeff *psquare = &square;
+    Coeffs coeffs = {};
+    Roots roots   = {};
 
-    Roots x = {};
-    Roots *proots = &x;
-
-    enterSquare (psquare);
-
-    int nRoots = solveSquare (psquare, proots);
-
-    printSquare (nRoots, proots);
+    enterSquare (&coeffs);
+    solveSquare (&coeffs, &roots);
+    printSquare (&roots);
 
     return 0;
 }
 
-void enterSquare (Coeff *square)
+void enterSquare (Coeffs *coeffs)
 {
-  printf ("enter X squared coefficient: ");
-  scanf ("%lf", &(*square).a);
-  assert(std::isfinite((*square).a));
+    printf ("enter X squared coefficient: ");
+    scanf ("%lf", &coeffs->a);
+    assert(std::isfinite(coeffs->a));
 
-  printf ("enter X coefficient: ");
-  scanf ("%lf", &(*square).b);
-  assert (std::isfinite((*square).b));
+    printf ("enter X coefficient: ");
+    scanf ("%lf", &coeffs->b);
+    assert (std::isfinite(coeffs->b));
 
-  printf ("enter absolute term: ");
-  scanf ("%lf", &(*square).c);
-  assert (std::isfinite((*square).c));
+    printf ("enter absolute term: ");
+    scanf ("%lf", &coeffs->c);
+    assert (std::isfinite(coeffs->c));
 }
 
-int solveSquare (Coeff *square, Roots *x)
+void solveSquare (Coeffs *coeffs, Roots *roots)
 {
-    double a = (*square).a;
-    double b = (*square).b;
-    double c = (*square).c;
+    double a = coeffs->a;
+    double b = coeffs->b;
+    double c = coeffs->c;
 
-    assert (&x->x1 != nullptr);
-    assert (&x->x2 != nullptr);
-    assert (&x->x1 != &x->x2);
+    assert (&roots->x1 != nullptr);
+    assert (&roots->x2 != nullptr);
+    assert (&roots->x1 != &roots->x2);
 
     double discr = b*b - 4*a*c;
 
     if ((a == 0) && (b == 0) && (c == 0))
     {
-        return INF_ROOTS;
+        roots->nRoots = INF_ROOTS;
     }
     else if (discr < 0)
     {
-        return 0;
+        roots->nRoots = 0;
     }
     else if (discr == 0)
     {
-         x->x1 = x->x2 = -b / (2 * a);
+         roots->x1 = roots->x2 = -b / (2 * a);
 
-         return 1;
+         roots->nRoots = 1;
     }
     else
     {
         double rootFromDiscr = sqrt (discr);
 
-        x->x1 = (-b + rootFromDiscr) / (2 * a);
-        x->x2 = (-b - rootFromDiscr) / (2 * a);
+        roots->x1 = (-b + rootFromDiscr) / (2 * a);
+        roots->x2 = (-b - rootFromDiscr) / (2 * a);
 
-        return 2;
+        roots->nRoots = 2;
     }
 }
 
-void printSquare (const int nRoots, Roots *x)
+void printSquare (Roots *roots)
 {
-    assert (&x->x1 != nullptr);
-    assert (&x->x2 != nullptr);
-    assert (&x->x1 != &x->x2);
+    assert (&roots->x1 != nullptr);
+    assert (&roots->x2 != nullptr);
+    assert (&roots->x1 != &roots->x2);
 
-    switch (nRoots)
+    switch (roots->nRoots)
      {
         case 0:
             printf ("there is no solutions");
             break;
         case 1:
-            printf ("the solution is x = %.2lf.", x->x1);
+            printf ("the solution is x = %.2lf.", roots->x1);
             break;
         case 2:
-            printf ("the solutions are x = %.2lf and x = %.2lf\n", x->x1, x->x2);
+            printf ("the solutions are x = %.2lf and x = %.2lf\n", roots->x1, roots->x2);
             break;
         case INF_ROOTS:
             printf ("any number");
