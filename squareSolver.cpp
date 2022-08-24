@@ -3,7 +3,10 @@
 #include <assert.h>
 #include <cmath>
 
-enum square_consts {INF_ROOTS = 4};
+enum square_consts
+{
+    INF_ROOTS = 4
+};
 
 struct Coeffs
 {
@@ -14,15 +17,14 @@ struct Coeffs
 
 struct Roots
 {
-    int nRoots = 0;
     double x1  = 0;
     double x2  = 0;
 };
 
 void enterSquare (Coeffs *coeffs);
-void solveSquare (Coeffs *coeffs, Roots *roots);
+int solveSquare (Coeffs *coeffs, Roots *roots);
 int solveLiner (const double b, const double c, Roots *roots);
-void printSquare (Roots *roots);
+void printSquare (int nRoots, Roots *roots);
 
 int main ()
 {
@@ -30,8 +32,8 @@ int main ()
     Roots roots   = {};
 
     enterSquare (&coeffs);
-    solveSquare (&coeffs, &roots);
-    printSquare (&roots);
+    int nRoots = solveSquare (&coeffs, &roots);
+    printSquare (nRoots, &roots);
 
     return 0;
 }
@@ -51,7 +53,7 @@ void enterSquare (Coeffs *coeffs)
     assert (std::isfinite(coeffs->c));
 }
 
-void solveSquare (Coeffs *coeffs, Roots *roots)
+int solveSquare (Coeffs *coeffs, Roots *roots)
 {
     assert (roots);
     assert (coeffs);
@@ -64,17 +66,17 @@ void solveSquare (Coeffs *coeffs, Roots *roots)
 
     if (a == 0)
     {
-        roots->nRoots = solveLiner (b, c, roots);
+        return solveLiner (b, c, roots);
     }
     else if (discr < 0)
     {
-        roots->nRoots = 0;
+        return 0;
     }
     else if (discr == 0)
     {
-         roots->x1 = roots->x2 = -b / (2 * a);
+        roots->x1 = roots->x2 = -b / (2 * a);
 
-         roots->nRoots = 1;
+        return 1;
     }
     else
     {
@@ -83,7 +85,7 @@ void solveSquare (Coeffs *coeffs, Roots *roots)
         roots->x1 = (-b + rootFromDiscr) / (2 * a);
         roots->x2 = (-b - rootFromDiscr) / (2 * a);
 
-        roots->nRoots = 2;
+        return 2;
     }
 }
 
@@ -105,11 +107,11 @@ int solveLiner (const double b, const double c, Roots *roots)
     }
 }
 
-void printSquare (Roots *roots)
+void printSquare (const int nRoots, Roots *roots)
 {
     assert (roots);
 
-    switch (roots->nRoots)
+    switch (nRoots)
      {
         case 0:
             printf ("there is no solutions");
