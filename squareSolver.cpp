@@ -1,30 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
-#include <cmath>
+#include "compare.h"
+#include "square.h"
+#include "square.h"
 
-enum square_consts
-{
-    INF_ROOTS = 4
-};
-
-struct Coeffs
-{
-    double a = 0;
-    double b = 0;
-    double c = 0;
-};
-
-struct Roots
-{
-    double x1  = 0;
-    double x2  = 0;
-};
-
-void enterSquare (Coeffs *coeffs);
-int solveSquare (Coeffs *coeffs, Roots *roots);
-int solveLiner (const double b, const double c, Roots *roots);
-void printSquare (int nRoots, Roots *roots);
+const double THRESHOLD = 2e-10;
 
 int main ()
 {
@@ -42,15 +23,15 @@ void enterSquare (Coeffs *coeffs)
 {
     printf ("enter X squared coefficient: ");
     scanf  ("%lf", &coeffs->a);
-    assert (std::isfinite(coeffs->a));
+    assert (isfinite(coeffs->a));
 
     printf ("enter X coefficient: ");
     scanf  ("%lf", &coeffs->b);
-    assert (std::isfinite(coeffs->b));
+    assert (isfinite(coeffs->b));
 
     printf ("enter absolute term: ");
     scanf  ("%lf", &coeffs->c);
-    assert (std::isfinite(coeffs->c));
+    assert (isfinite(coeffs->c));
 }
 
 int solveSquare (Coeffs *coeffs, Roots *roots)
@@ -64,15 +45,15 @@ int solveSquare (Coeffs *coeffs, Roots *roots)
 
     double discr = b*b - 4*a*c;
 
-    if (a == 0)
+    if (is_equal (a, 0, THRESHOLD))
     {
         return solveLiner (b, c, roots);
     }
-    else if (discr < 0)
+    else if (is_lower (discr, 0, THRESHOLD))
     {
         return 0;
     }
-    else if (discr == 0)
+    else if (is_equal (discr, 0, THRESHOLD))
     {
         roots->x1 = roots->x2 = -b / (2 * a);
 
@@ -91,13 +72,13 @@ int solveSquare (Coeffs *coeffs, Roots *roots)
 
 int solveLiner (const double b, const double c, Roots *roots)
 {
-    if (b != 0)
+    if (!is_equal (b, 0, THRESHOLD))
     {
         roots->x1 = roots->x2 = -c / b;
 
         return 1;
     }
-    else if (c == 0)
+    else if (is_equal (c, 0, THRESHOLD))
     {
         return INF_ROOTS;
     }
@@ -129,4 +110,26 @@ void printSquare (const int nRoots, Roots *roots)
             assert (0);
             break;
     }
+}
+
+int is_equal (const double val1, const double val2, const double threshold)
+{
+    return fabs (val1 - val2) <= threshold;
+}
+
+int is_lower (const double val1, const double val2, const double threshold)
+{
+    if (!is_equal (val1, val2, threshold))
+    {
+        return val1 < val2;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int is_greater (const double val1, const double val2, const double threshold)
+{
+    return (is_equal (val1, val2, threshold)) ? 0 : (val1 > val2);
 }
