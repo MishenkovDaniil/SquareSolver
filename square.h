@@ -19,11 +19,4 @@ struct Roots
     double x2  = 0;
 };
 
-void enterSquare (Coeffs *coeffs);
-
-int solveSquare (Coeffs *coeffs, Roots *roots);
-int solveLiner (const double b, const double c, Roots *roots);
-
-void printSquare (int nRoots, Roots *roots);
-
 #endif /* SQUARE_H */

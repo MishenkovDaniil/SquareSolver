@@ -1,12 +1,9 @@
-#include <stdio.h>
-#include <math.h>
-#include <assert.h>
-#include "compare.h"
+#include "printSquare.h"
 #include "square.h"
-#include "square.h"
+#include "solveSquare.h"
+#include "enterSquare.h"
 
-const double THRESHOLD = 2e-10;
-
+//void enterSquare (Coeffs *coeffs);
 int main ()
 {
     Coeffs coeffs = {};
@@ -19,7 +16,7 @@ int main ()
     return 0;
 }
 
-void enterSquare (Coeffs *coeffs)
+/*void enterSquare (Coeffs *coeffs)
 {
     printf ("enter X squared coefficient: ");
     scanf  ("%lf", &coeffs->a);
@@ -132,4 +129,4 @@ int is_lower (const double val1, const double val2, const double threshold)
 int is_greater (const double val1, const double val2, const double threshold)
 {
     return (is_equal (val1, val2, threshold)) ? 0 : (val1 > val2);
-}
+}*/
