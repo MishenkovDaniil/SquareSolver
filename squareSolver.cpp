@@ -39,15 +39,15 @@ int main ()
 void enterSquare (Coeffs *coeffs)
 {
     printf ("enter X squared coefficient: ");
-    scanf ("%lf", &coeffs->a);
+    scanf  ("%lf", &coeffs->a);
     assert (std::isfinite(coeffs->a));
 
     printf ("enter X coefficient: ");
-    scanf ("%lf", &coeffs->b);
+    scanf  ("%lf", &coeffs->b);
     assert (std::isfinite(coeffs->b));
 
     printf ("enter absolute term: ");
-    scanf ("%lf", &coeffs->c);
+    scanf  ("%lf", &coeffs->c);
     assert (std::isfinite(coeffs->c));
 }
 
@@ -92,6 +92,7 @@ int solveLiner (const double b, const double c, Roots *roots)
     if (b != 0)
     {
         roots->x1 = roots->x2 = -c / b;
+
         return 1;
     }
     else if (c == 0)
