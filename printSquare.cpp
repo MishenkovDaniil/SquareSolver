@@ -10,16 +10,16 @@ void printSquare (const int nRoots, Roots *roots)
     switch (nRoots)
      {
         case 0:
-            printf ("there is no solutions");
+            printf ("there is no solutions\n");
             break;
         case 1:
-            printf ("the solution is x = %.2lf.", roots->x1);
+            printf ("the solution is x = %.2lf.\n", roots->x1);
             break;
         case 2:
             printf ("the solutions are x = %.2lf and x = %.2lf\n", roots->x1, roots->x2);
             break;
         case INF_ROOTS:
-            printf ("any number");
+            printf ("any number\n");
             break;
         default:
             assert (0);

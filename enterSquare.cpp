@@ -3,18 +3,19 @@
 #include <math.h>
 #include "square.h"
 #include "enterSquare.h"
+#include "cleanBuffer.h"
+#include "scanInBuffer.h"
 
-void enterSquare (Coeffs *coeffs)
+void enterSquare (char buffer[], const int size, Coeffs *coeffs)
 {
-    printf ("enter X squared coefficient: ");
-    scanf  ("%lf", &coeffs->a);
+    cleanBuffer (buffer, size);
+
+    printf ("enter coefficients of square equality through a space: ");
+
+    scanInBuffer (buffer, size); // error
+    sscanf (buffer, "%lf %lf %lf", &coeffs->a, &coeffs->b, &coeffs->c);
+
     assert (isfinite(coeffs->a));
-
-    printf ("enter X coefficient: ");
-    scanf  ("%lf", &coeffs->b);
     assert (isfinite(coeffs->b));
-
-    printf ("enter absolute term: ");
-    scanf  ("%lf", &coeffs->c);
     assert (isfinite(coeffs->c));
 }
