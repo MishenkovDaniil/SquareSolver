@@ -1,5 +1,11 @@
+/**
+ *\file
+ *\brief Header with information needed to test square equality.
+ */
+
 #ifndef SINGLE_TESTER_H
 #define SINGLE_TESTER_H
+
 #include "square.h"
 
 struct TestSquareInf

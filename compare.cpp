@@ -1,4 +1,5 @@
 #include <math.h>
+
 #include "compare.h"
 
 int is_equal (const double val1, const double val2, const double threshold)

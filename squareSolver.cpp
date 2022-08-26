@@ -1,13 +1,13 @@
 #include <stdio.h>
+
 #include "square.h"
-#include "printSquare.h"
+#include "inputSquare.h"
 #include "solveSquare.h"
-#include "enterSquare.h"
+#include "outputSquare.h"
 #include "Buffer.h"
 #include "isEqualStrings.h"
-#include "answer.h"
 
-static const int BUFFER_SIZE = 10;
+static const int BUFFER_SIZE = 20;
 
 int main ()
 {
@@ -17,45 +17,45 @@ int main ()
     {
         cleanBuffer (buffer, BUFFER_SIZE);
 
-        int status = scanInBuffer (buffer, BUFFER_SIZE); //
+        int status = scanInBuffer (buffer, BUFFER_SIZE);
 
         if (status == BUFFER_OVERFLOW)
         {
-            printf ("Error: buffer overflow");
+            printf ("Error: buffer overflow\n");
             break;
         }
 
         if (isEqualStrings (buffer, OPT_HELP))
         {
-            Answer (HELP);
+            showOption (HELP);
         }
         else if (isEqualStrings (buffer, OPT_INFO))
         {
-            Answer (INFO);
+            showOption (INFO);
         }
         else if (isEqualStrings (buffer, OPT_SOLVE))
         {
             Coeffs coeffs = {};
             Roots roots   = {};
 
-            if (enterSquare (buffer, BUFFER_SIZE, &coeffs))
+            if (enterSquare (buffer, BUFFER_SIZE, &coeffs) == 0)
             {
                 int nRoots = solveSquare (&coeffs, &roots);
                 printSquare (nRoots, &roots);
             }
             else
             {
-                Answer (ERROR);
+                showOption (ERROR);
             }
         }
         else if (isEqualStrings (buffer, OPT_QUIT))
         {
-            Answer (QUIT);
+            showOption (QUIT);
             break;
         }
         else
         {
-            Answer (ERROR);
+            showOption (ERROR);
         }
     }
 

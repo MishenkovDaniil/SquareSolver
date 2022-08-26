@@ -20,10 +20,8 @@ void singleTester (TestSquareInf *testSquareInf, Roots *roots, const int real_nR
 
     int nRoots = solveSquare (&testSquareInf->testCoeffs, roots);
 
-    if ((nRoots == real_nRoots)
-        ||
-        (is_equal (x1, real_x1) && is_equal (x2, real_x2))
-        ||
+    if ((nRoots == real_nRoots) ||
+        (is_equal (x1, real_x1) && is_equal (x2, real_x2)) ||
         (is_equal (x1, real_x2) && is_equal (x2, real_x1)))
     {
         printf ("SUCCESS\n\n\n");

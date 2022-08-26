@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <math.h>
+
 #include "square.h"
 #include "compare.h"
 #include "solveSquare.h"
