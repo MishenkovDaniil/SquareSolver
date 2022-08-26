@@ -26,7 +26,7 @@ int enterSquare (char buffer[], const int size, Coeffs *coeffs)
     int nScanedValues = sscanf (buffer, "%lf %lf %lf", &coeffs->a, &coeffs->b, &coeffs->c);
     if (nScanedValues != 3)
     {
-        return ERROR;
+        return INPUT_ERROR;
     }
 
     assert (isfinite(coeffs->a));

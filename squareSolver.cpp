@@ -45,7 +45,7 @@ int main ()
             }
             else
             {
-                showOption (ERROR);
+                showOption (INPUT_ERROR);
             }
         }
         else if (isEqualStrings (buffer, OPT_QUIT))
@@ -55,7 +55,7 @@ int main ()
         }
         else
         {
-            showOption (ERROR);
+            showOption (INPUT_ERROR);
         }
     }
 

@@ -44,7 +44,7 @@ void showOption (const int number)
                     "-solve\t click if you want to solve square equality\n"       \
                     "-quit\t click if you want to stop working with a programm\n");
             break;
-        case ERROR:
+        case INPUT_ERROR:
             printf ("Not readable, please try again\n");
             break;
         default:
