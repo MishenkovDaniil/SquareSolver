@@ -36,6 +36,9 @@ void singleTester (TestSquareInf *testSquareInf, Roots *roots, const int real_nR
 
 void printFailedTest (const int nRoots, Roots *roots, const int real_nRoots, const double real_x1, const double real_x2)
 {
+    assert (testSquareInf);
+    assert (roots);
+
     printf ("Failed: (%lf %lf %lf), nRoots = %d, x1 = %lf, x2 = %lf" \
             "Expected: nRoots = %d, x1 = %lf, x2 = %lf", nRoots, roots->x1, roots->x2, real_nRoots, real_x1, real_x2);
 }

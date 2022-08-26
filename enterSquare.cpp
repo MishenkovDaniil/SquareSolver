@@ -8,6 +8,7 @@
 
 int enterSquare (char buffer[], const int size, Coeffs *coeffs)
 {
+    assert (buffer);
     assert (coeffs);
 
     cleanBuffer (buffer, size);
