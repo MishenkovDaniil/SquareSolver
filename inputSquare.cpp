@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief consists from input information functions
+ */
+
 #include <stdio.h>
 #include <assert.h>
 #include <math.h>
@@ -23,10 +28,23 @@ int enterSquare (char buffer[], const int size, Coeffs *coeffs)
         printf ("Error: buffer overflow\n");//
     }
 
-    int nScanedValues = sscanf (buffer, "%lf %lf %lf", &coeffs->a, &coeffs->b, &coeffs->c);
+    int  nCh = 0;
+    int nScanedValues = sscanf (buffer, "%lf %lf %lf%n", &coeffs->a, &coeffs->b, &coeffs->c, &nCh);
+
     if (nScanedValues != 3)
     {
         return INPUT_ERROR;
+    }
+    else
+    {
+        for (int i = nCh; (buffer [i]) != '\n' && (buffer[i]) != '\0'; i++)
+        {
+            if (!(isspace (buffer[i])))
+            {
+               return INPUT_ERROR;
+               break;
+            }
+        }
     }
 
     assert (isfinite(coeffs->a));
@@ -35,3 +53,4 @@ int enterSquare (char buffer[], const int size, Coeffs *coeffs)
 
     return 0;
 }
+
