@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief clean your buffer or scan from it
+ */
+
 #include <stdio.h>
 #include <assert.h>
 

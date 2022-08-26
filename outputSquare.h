@@ -12,8 +12,6 @@ static const char OPT_QUIT[]  = "quit";  /// state option "quit"
 static const char OPT_INFO[]  = "info";  /// state option "info"
 static const char OPT_SOLVE[] = "solve"; /// state option "solve"
 
-static const int INPUT_ERROR = -1;             /// state value for error situation
-
 /// state numerical values for menu options
 enum options
 {

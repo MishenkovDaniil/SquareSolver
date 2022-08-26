@@ -8,8 +8,8 @@ You can use it if you have:
 
 ## Installation
 ###### to compile copy this repository and enter the squareSolver.bat programm
-###### or compile it menually and after copying enter this (for Windows only): g++ -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual squareSolver.cpp inputSquare.cpp outputSquare.cpp solveSquare.cpp compare.cpp isEqualStrings.cpp Buffer.cpp
-###### and then a.exe
+or compile it menually and after copying enter this (for Windows only): g++ -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual squareSolver.cpp inputSquare.cpp outputSquare.cpp solveSquare.cpp compare.cpp isEqualStrings.cpp Buffer.cpp
+and then a.exe
 
 ## How to use
 #### you can enter one of the options to start working with the programm

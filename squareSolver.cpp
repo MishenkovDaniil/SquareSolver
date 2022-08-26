@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief consists from the main function that solves square equality
+ */
+
 #include <stdio.h>
 
 #include "square.h"
@@ -21,7 +26,7 @@ int main ()
 
         if (status == BUFFER_OVERFLOW)
         {
-            printf ("Error: buffer overflow\n");
+            showOption (BUFFER_OVERFLOW);
             break;
         }
 

@@ -1,4 +1,9 @@
-#include <math.h>
+/**
+ * \file
+ * \brief compare values if they are equal, the first one is greater or lower
+ */
+
+ #include <math.h>
 
 #include "compare.h"
 

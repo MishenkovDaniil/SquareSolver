@@ -10,8 +10,9 @@
 /// state numerical values for error situations
 enum errors
 {
-    NO_ERROR = 0,
-    BUFFER_OVERFLOW = -1 ///< state value for buffer overflow situation
+    NO_ERROR = 0,        ///< state value for expected situations
+    INPUT_ERROR = -1,    ///< state value for error situation
+    BUFFER_OVERFLOW = -2 ///< state value for buffer overflow situation
 };
 
 /**

@@ -1,8 +1,14 @@
+/**
+ * \file
+ * \brief consists from output information functions
+ */
+
 #include <stdio.h>
 #include <assert.h>
 
 #include "square.h"
 #include "outputSquare.h"
+#include "inputSquare.h"
 
 void printSquare (const int nRoots, Roots *roots)
 {
@@ -14,10 +20,10 @@ void printSquare (const int nRoots, Roots *roots)
             printf ("there is no solutions\n");
             break;
         case 1:
-            printf ("the solution is x = %.2lf.\n", roots->x1);
+            printf ("the solution is x = %.5lf.\n", roots->x1);
             break;
         case 2:
-            printf ("the solutions are x = %.2lf and x = %.2lf\n", roots->x1, roots->x2);
+            printf ("the solutions are x = %.5lf and x = %.5lf\n", roots->x1, roots->x2);
             break;
         case INF_ROOTS:
             printf ("any number\n");
@@ -43,6 +49,9 @@ void showOption (const int number)
             printf ("-help\t give instructions how to use a programm\n"           \
                     "-solve\t click if you want to solve square equality\n"       \
                     "-quit\t click if you want to stop working with a programm\n");
+            break;
+        case BUFFER_OVERFLOW:
+            printf ("Error: buffer overflow\n");
             break;
         case INPUT_ERROR:
             printf ("Not readable, please try again\n");

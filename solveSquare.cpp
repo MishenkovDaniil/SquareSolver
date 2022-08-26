@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief consists from solve equality functions
+ */
+
 #include <assert.h>
 #include <math.h>
 

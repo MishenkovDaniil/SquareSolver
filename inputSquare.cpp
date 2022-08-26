@@ -25,7 +25,7 @@ int enterSquare (char buffer[], const int size, Coeffs *coeffs)
     int scanStatus = scanInBuffer (buffer, size);
     if (scanStatus == BUFFER_OVERFLOW)
     {
-        printf ("Error: buffer overflow\n");//
+        showInfo (BUFFER_OVERFLOW);
     }
 
     int  nCh = 0;

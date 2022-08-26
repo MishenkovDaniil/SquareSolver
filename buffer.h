@@ -15,7 +15,7 @@ int scanInBuffer (char buffer[], const int size);
 
 /**
  * Clean buffer content.
- * \param [out] buffer array of input information //
+ * \param [out] buffer array to clean
  * \param [in]  size   max size of input information, size of buffer
  */
 void cleanBuffer (char buffer[], const int size);

@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief consists from string comparing function
+ */
+
 #include <assert.h>
 
 #include "isEqualStrings.h"
