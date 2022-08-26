@@ -6,7 +6,7 @@
 #ifndef COMPARE_H
 #define COMPARE_H
 
-static const double THRESHOLD = 2e-10;
+static const double THRESHOLD = 2e-5;
 
 /**
  * Check if values are equal with some threshold.

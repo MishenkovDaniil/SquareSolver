@@ -58,6 +58,15 @@ int main()
 
     singleTester (&testSquareInf, &roots, 2);
 
+
+    testSquareInf.testCoeffs.a = 0;
+    testSquareInf.testCoeffs.b = 1;
+    testSquareInf.testCoeffs.c = 2;
+
+    testSquareInf.realRoots.x1 = 1;
+    testSquareInf.realRoots.x2 = 0;
+
+    singleTester (&testSquareInf, &roots, 1);
+
     return 0;
 }
-//void (TestSquareInf *testSquareInf, double a, double b, double c
