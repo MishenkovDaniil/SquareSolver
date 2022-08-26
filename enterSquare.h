@@ -2,6 +2,6 @@
 #define ENTER_SQUARE_H
 #include "square.h"
 
-void enterSquare (char buffer[], const int size, Coeffs *coeffs);
+int enterSquare (char buffer[], const int size, Coeffs *coeffs);
 
 #endif /* ENTER_SQUARE_H */

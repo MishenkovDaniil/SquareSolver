@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <assert.h>
-#include "interactivePanelEnums.h"
-#include "answerConsts.h"
 #include "answer.h"
 
 void Answer (const int number)

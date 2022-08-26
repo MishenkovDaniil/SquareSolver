@@ -3,12 +3,9 @@
 #include "printSquare.h"
 #include "solveSquare.h"
 #include "enterSquare.h"
-#include "interactivePanelEnums.h"
-#include "scanInBuffer.h"
+#include "Buffer.h"
 #include "isEqualStrings.h"
 #include "answer.h"
-#include "answerConsts.h"
-#include "cleanBuffer.h"
 
 static const int BUFFER_SIZE = 10;
 
@@ -41,9 +38,15 @@ int main ()
             Coeffs coeffs = {};
             Roots roots   = {};
 
-            enterSquare (buffer, BUFFER_SIZE, &coeffs);
-            int nRoots = solveSquare (&coeffs, &roots);
-            printSquare (nRoots, &roots);
+            if (enterSquare (buffer, BUFFER_SIZE, &coeffs))
+            {
+                int nRoots = solveSquare (&coeffs, &roots);
+                printSquare (nRoots, &roots);
+            }
+            else
+            {
+                Answer (ERROR);
+            }
         }
         else if (isEqualStrings (buffer, OPT_QUIT))
         {
