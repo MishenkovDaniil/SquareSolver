@@ -23,4 +23,4 @@ You can use it if you have:
 
 ## Documentation
 
-If you want to check the documentation of the code, read it in a repository
+If you want to check the documentation of the code, generate it with doxygen using files in s repository
