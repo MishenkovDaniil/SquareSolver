@@ -25,10 +25,10 @@ int enterSquare (char buffer[], const int size, Coeffs *coeffs)
     int scanStatus = scanInBuffer (buffer, size);
     if (scanStatus == BUFFER_OVERFLOW)
     {
-        showInfo (BUFFER_OVERFLOW);
+        showOption (BUFFER_OVERFLOW);
     }
 
-    int  nCh = 0;
+    int nCh = 0;
     int nScanedValues = sscanf (buffer, "%lf %lf %lf%n", &coeffs->a, &coeffs->b, &coeffs->c, &nCh);
 
     if (nScanedValues != 3)

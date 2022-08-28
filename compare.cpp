@@ -1,6 +1,6 @@
 /**
  * \file
- * \brief compare values if they are equal, the first one is greater or lower
+ * \brief consists from value comparing functions
  */
 
  #include <math.h>

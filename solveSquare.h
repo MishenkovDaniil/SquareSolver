@@ -8,14 +8,14 @@
 #include "square.h"
 
 /**
- * Solve square equality.
+ * solve square equality.
  * \param [in] coeffs entered square coefficients
  * \param [out] roots roots of square equality
  */
 int solveSquare (Coeffs *coeffs, Roots *roots);
 
 /**
- * Solve linear eqaulity.
+ * solve linear eqaulity.
  * \param [in] b X coefficient
  * \param [in] c absolute term
  * \param [out] roots roots of linear equality

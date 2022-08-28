@@ -1,6 +1,6 @@
 /**
  * \file
- * \brief clean your buffer or scan from it
+ * \brief clean buffer or scan from it
  */
 
 #include <stdio.h>
