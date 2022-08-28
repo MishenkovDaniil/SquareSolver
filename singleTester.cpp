@@ -7,7 +7,7 @@
 #include "compare.h"
 
 void printFailedTest (Coeffs *testCoeffs, const int nRoots, Roots *roots,
-                      const int real_nRoots, Roots *realRoots);
+                      const int real_nRoots, const double real_x1, const double real_x2);
 
 void singleTester (TestSquareInf *testSquareInf, Roots *roots, const int real_nRoots)
 {
