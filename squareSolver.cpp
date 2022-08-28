@@ -18,6 +18,8 @@ int main ()
 {
     char buffer[BUFFER_SIZE] = {0};
 
+    printf ("enter \"info\" to view possible options\n");
+
     for (;;)
     {
         cleanBuffer (buffer, BUFFER_SIZE);
